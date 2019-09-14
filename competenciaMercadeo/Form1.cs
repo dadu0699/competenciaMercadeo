@@ -29,15 +29,17 @@ namespace competenciaMercadeo
 
         private void AnalyzeButton_Click(object sender, EventArgs e)
         {
-            LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(); ;
+            LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
             HTMLReport htmlReport = new HTMLReport();
 
             RichTextBox richTextBox = tabControl1.SelectedTab.Controls.Cast<RichTextBox>().FirstOrDefault(x => x is RichTextBox);
-            string entrada = richTextBox.Text;
-            lexicalAnalyzer.scanner(entrada);
+            string content = richTextBox.Text;
+            lexicalAnalyzer.scanner(content);
 
             graphVizBox.Image = null;
             flagBox.Image = null;
+            countryLabel.Text = null;
+            populationlabel.Text = null;
 
             if (!lexicalAnalyzer.ListError.Any())
             {
@@ -57,6 +59,7 @@ namespace competenciaMercadeo
                     }
 
                     betterOption();
+                    intelliSense();
                 }
             }
             else
@@ -273,7 +276,8 @@ namespace competenciaMercadeo
                 StreamWriter streamWriter = new StreamWriter(tabControl1.SelectedTab.Text);
                 streamWriter.Write(richTextBox.Text);
                 streamWriter.Close();
-            } else
+            }
+            else
             {
                 saveAs();
             }
@@ -332,6 +336,107 @@ namespace competenciaMercadeo
             if (File.Exists(Directory.GetCurrentDirectory() + "\\" + graph.Name.Replace(" ", "") + ".pdf"))
             {
                 Process.Start(Directory.GetCurrentDirectory() + "\\" + graph.Name.Replace(" ", "") + ".pdf");
+            }
+        }
+
+        private void RichTextBox_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void intelliSense()
+        {
+            LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
+            RichTextBox richTextBox = tabControl1.SelectedTab.Controls.Cast<RichTextBox>().FirstOrDefault(x => x is RichTextBox);
+            string content = richTextBox.Text;
+            lexicalAnalyzer.scanner(content);
+
+            foreach (Token item in lexicalAnalyzer.ListToken)
+            {
+                if (item.TypeToken.Equals("Reservada Grafica") || item.TypeToken.Equals("Reservada Nombre")
+                    || item.TypeToken.Equals("Reservada Continente") || item.TypeToken.Equals("Reservada Pais")
+                    || item.TypeToken.Equals("Reservada Poblacion") || item.TypeToken.Equals("Reservada Saturacion")
+                    || item.TypeToken.Equals("Reservada Bandera"))
+                {
+                    int index = -1;
+                    int selectStart = richTextBox.SelectionStart;
+
+                    while ((index = richTextBox.Text.IndexOf(item.Value, (index + 1))) != -1)
+                    {
+                        richTextBox.Select((index), item.Value.Length);
+                        richTextBox.SelectionColor = Color.FromArgb(41, 83, 131);
+                        richTextBox.Select(selectStart, 0);
+                        richTextBox.SelectionColor = Color.FromArgb(217,218,128);
+                    }
+                }
+            }
+
+
+            foreach (Token item in lexicalAnalyzer.ListToken)
+            {
+                if (item.TypeToken.Equals("Numero"))
+                {
+                    int index = -1;
+                    int selectStart = richTextBox.SelectionStart;
+
+                    while ((index = richTextBox.Text.IndexOf(item.Value, (index + 1))) != -1)
+                    {
+                        richTextBox.Select((index), item.Value.Length);
+                        richTextBox.SelectionColor = Color.FromArgb(30, 232, 190);
+                        richTextBox.Select(selectStart, 0);
+                        richTextBox.SelectionColor = Color.FromArgb(217,218,128);
+                    }
+                }
+            }
+
+            foreach (Token item in lexicalAnalyzer.ListToken)
+            {
+                if (item.TypeToken.Equals("Simbolo Llave Izquierda") || item.TypeToken.Equals("Simbolo Llave Derecha"))
+                {
+                    int index = -1;
+                    int selectStart = richTextBox.SelectionStart;
+
+                    while ((index = richTextBox.Text.IndexOf(item.Value, (index + 1))) != -1)
+                    {
+                        richTextBox.Select((index), item.Value.Length);
+                        richTextBox.SelectionColor = Color.FromArgb(227, 103, 149);
+                        richTextBox.Select(selectStart, 0);
+                        richTextBox.SelectionColor = Color.FromArgb(217,218,128);
+                    }
+                }
+            }
+
+            foreach (Token item in lexicalAnalyzer.ListToken)
+            {
+                if (item.TypeToken.Equals("Simbolo Punto y Coma"))
+                {
+                    int index = -1;
+                    int selectStart = richTextBox.SelectionStart;
+
+                    while ((index = richTextBox.Text.IndexOf(item.Value, (index + 1))) != -1)
+                    {
+                        richTextBox.Select((index), item.Value.Length);
+                        richTextBox.SelectionColor = Color.FromArgb(207, 113, 65);
+                        richTextBox.Select(selectStart, 0);
+                        richTextBox.SelectionColor = Color.FromArgb(217,218,128);
+                    }
+                }
+            }
+
+            foreach (Token item in lexicalAnalyzer.ListToken)
+            {
+                if (item.TypeToken.Equals("Cadena"))
+                {
+                    int index = -1;
+                    int selectStart = richTextBox.SelectionStart;
+
+                    while ((index = richTextBox.Text.IndexOf(item.Value, (index + 1))) != -1)
+                    {
+                        richTextBox.Select((index), item.Value.Length);
+                        richTextBox.SelectionColor = Color.FromArgb(217, 171, 103);
+                        richTextBox.Select(selectStart, 0);
+                        richTextBox.SelectionColor = Color.FromArgb(217,218,128);
+                    }
+                }
             }
         }
     }
