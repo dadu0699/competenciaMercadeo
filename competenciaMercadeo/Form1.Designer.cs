@@ -42,24 +42,24 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.populationlabel = new System.Windows.Forms.Label();
+            this.countryLabel = new System.Windows.Forms.Label();
+            this.flagBox = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.graphVizBox = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.generatePDFButton = new System.Windows.Forms.Button();
             this.analyzeButton = new System.Windows.Forms.Button();
-            this.flagBox = new System.Windows.Forms.PictureBox();
-            this.countryLabel = new System.Windows.Forms.Label();
-            this.populationlabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flagBox)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.graphVizBox)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.flagBox)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -88,34 +88,35 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Abrir";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Guardar";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Guardar como";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
             // 
             // newTabToolStripMenuItem
             // 
             this.newTabToolStripMenuItem.Name = "newTabToolStripMenuItem";
-            this.newTabToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newTabToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newTabToolStripMenuItem.Text = "Nueva Pestaña";
             this.newTabToolStripMenuItem.Click += new System.EventHandler(this.NewTabToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem1
             // 
             this.closeToolStripMenuItem1.Name = "closeToolStripMenuItem1";
-            this.closeToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.closeToolStripMenuItem1.Text = "Salir";
             this.closeToolStripMenuItem1.Click += new System.EventHandler(this.CloseToolStripMenuItem1_Click);
             // 
@@ -192,6 +193,31 @@
             this.panel5.Size = new System.Drawing.Size(506, 200);
             this.panel5.TabIndex = 2;
             // 
+            // populationlabel
+            // 
+            this.populationlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.populationlabel.Location = new System.Drawing.Point(10, 105);
+            this.populationlabel.Name = "populationlabel";
+            this.populationlabel.Size = new System.Drawing.Size(191, 79);
+            this.populationlabel.TabIndex = 2;
+            // 
+            // countryLabel
+            // 
+            this.countryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.countryLabel.Location = new System.Drawing.Point(10, 16);
+            this.countryLabel.Name = "countryLabel";
+            this.countryLabel.Size = new System.Drawing.Size(191, 79);
+            this.countryLabel.TabIndex = 1;
+            // 
+            // flagBox
+            // 
+            this.flagBox.Location = new System.Drawing.Point(211, 16);
+            this.flagBox.Name = "flagBox";
+            this.flagBox.Size = new System.Drawing.Size(285, 168);
+            this.flagBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.flagBox.TabIndex = 0;
+            this.flagBox.TabStop = false;
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.graphVizBox);
@@ -257,31 +283,6 @@
             this.analyzeButton.UseVisualStyleBackColor = false;
             this.analyzeButton.Click += new System.EventHandler(this.AnalyzeButton_Click);
             // 
-            // flagBox
-            // 
-            this.flagBox.Location = new System.Drawing.Point(211, 16);
-            this.flagBox.Name = "flagBox";
-            this.flagBox.Size = new System.Drawing.Size(285, 168);
-            this.flagBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.flagBox.TabIndex = 0;
-            this.flagBox.TabStop = false;
-            // 
-            // countryLabel
-            // 
-            this.countryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.countryLabel.Location = new System.Drawing.Point(10, 16);
-            this.countryLabel.Name = "countryLabel";
-            this.countryLabel.Size = new System.Drawing.Size(191, 79);
-            this.countryLabel.TabIndex = 1;
-            // 
-            // populationlabel
-            // 
-            this.populationlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.populationlabel.Location = new System.Drawing.Point(10, 105);
-            this.populationlabel.Name = "populationlabel";
-            this.populationlabel.Size = new System.Drawing.Size(191, 79);
-            this.populationlabel.TabIndex = 2;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -303,10 +304,10 @@
             this.tabPage1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.flagBox)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.graphVizBox)).EndInit();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.flagBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

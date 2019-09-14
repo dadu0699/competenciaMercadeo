@@ -238,7 +238,7 @@ namespace competenciaMercadeo
             }
         }
 
-        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveAs()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
@@ -262,6 +262,26 @@ namespace competenciaMercadeo
                 tabControl1.SelectedTab.Text = saveFileDialog.FileName;
                 Console.WriteLine("Archivo " + saveFileDialog.FileName + " guardado con exito");
             }
+        }
+
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(tabControl1.SelectedTab.Text))
+            {
+                RichTextBox richTextBox = tabControl1.SelectedTab.Controls.Cast<RichTextBox>().FirstOrDefault(x => x is RichTextBox);
+
+                StreamWriter streamWriter = new StreamWriter(tabControl1.SelectedTab.Text);
+                streamWriter.Write(richTextBox.Text);
+                streamWriter.Close();
+            } else
+            {
+                saveAs();
+            }
+        }
+
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveAs();
         }
 
         private void NewTabToolStripMenuItem_Click(object sender, EventArgs e)
