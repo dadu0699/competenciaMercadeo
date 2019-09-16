@@ -166,31 +166,31 @@ namespace competenciaMercadeo.controller
 
         public void addWordReserved()
         {
-            if (auxiliary.Equals("grafica"))
+            if (auxiliary.Equals("Grafica"))
             {
                 addToken(Token.Type.RESERVADA_GRAFICA);
             }
-            else if (auxiliary.Equals("nombre"))
+            else if (auxiliary.Equals("Nombre"))
             {
                 addToken(Token.Type.RESERVADA_NOMBRE);
             }
-            else if (auxiliary.Equals("continente"))
+            else if (auxiliary.Equals("Continente"))
             {
                 addToken(Token.Type.RESERVADA_CONTINENTE);
             }
-            else if (auxiliary.Equals("pais"))
+            else if (auxiliary.Equals("Pais"))
             {
                 addToken(Token.Type.RESERVADA_PAIS);
             }
-            else if (auxiliary.Equals("poblacion"))
+            else if (auxiliary.Equals("Poblacion"))
             {
                 addToken(Token.Type.RESERVADA_POBLACION);
             }
-            else if (auxiliary.Equals("saturacion"))
+            else if (auxiliary.Equals("Saturacion"))
             {
                 addToken(Token.Type.RESERVADA_SATURACION);
             }
-            else if (auxiliary.Equals("bandera"))
+            else if (auxiliary.Equals("Bandera"))
             {
                 addToken(Token.Type.RESERVADA_BANDERA);
             }

@@ -95,7 +95,7 @@ namespace competenciaMercadeo
                     {
                         if (ListToken[j].TypeToken.Equals("Reservada Continente"))
                         {
-                            string continentName = removeQuotes(ListToken[j + 4].Value);
+                            string continentName = removeQuotes(ListToken[j + 5].Value);
                             int continentSaturation = 0;
 
                             // Countries

@@ -38,7 +38,7 @@ namespace competenciaMercadeo.util
         {
             File.WriteAllText(rdot, graph.ToString());
             string dotCommand = "dot.exe -Tpdf " + rdot + " -o " + rpdf;
-            Console.WriteLine(dotCommand);
+            // Console.WriteLine(dotCommand);
 
             var command = string.Format(dotCommand);
             var startProcess = new ProcessStartInfo("cmd", "/C" + command);
@@ -60,14 +60,17 @@ namespace competenciaMercadeo.util
             this.graph.Append("\nstart [shape=Mdiamond label=\"" + graph.Name + "\"];");
             foreach (Continent continent in graph.Continents)
             {
-                this.graph.Append("\n\n\tstart -> " + continent.Name + ";");
-                this.graph.Append("\n\t" + continent.Name + " [shape=record label=\"{" + continent.Name + "|" 
+                this.graph.Append("\n\n\tstart -> " + continent.Name.Replace(" ", "") + ";");
+                this.graph.Append("\n\t" + continent.Name.Replace(" ", "") + " [shape=record label=\"{" + continent.Name + "|" 
                     + continent.Saturation + "}\"style=filled fillcolor=" + getColor(continent.Saturation) + "];");
+
+                Console.WriteLine(continent.Name + "----" + continent.Saturation);
                 foreach (Country country in continent.Countries)
                 {
-                    this.graph.Append("\n\t" + continent.Name + "-> " + country.Name + ";");
-                    this.graph.Append("\n\t" + country.Name + " [shape=record label=\"{" + country.Name + "|"
+                    this.graph.Append("\n\t" + continent.Name.Replace(" ", "") + " -> " + country.Name.Replace(" ", "") + ";");
+                    this.graph.Append("\n\t" + country.Name.Replace(" ", "") + " [shape=record label=\"{" + country.Name + "|"
                         + country.Saturation + "}\"style=filled fillcolor=" + getColor(country.Saturation) + "];");
+                    Console.WriteLine("\t" + country.Name + "----" + country.Saturation);
                 }
             }
             this.graph.Append("\n}");
