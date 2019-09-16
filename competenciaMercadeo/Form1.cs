@@ -36,7 +36,10 @@ namespace competenciaMercadeo
             string content = richTextBox.Text;
             lexicalAnalyzer.scanner(content);
 
-            graphVizBox.Image = null;
+            if (graphVizBox.Image != null)
+            {
+                graphVizBox.Image.Dispose();
+            }
             flagBox.Image = null;
             countryLabel.Text = null;
             populationlabel.Text = null;
@@ -56,6 +59,7 @@ namespace competenciaMercadeo
                     {
                         Image image = Image.FromFile(Directory.GetCurrentDirectory() + "\\" + graph.Name.Replace(" ", "") + ".png");
                         graphVizBox.Image = image;
+                        // graphVizBox.Image = new Bitmap(Image.FromFile(Directory.GetCurrentDirectory() + "\\" + graph.Name.Replace(" ", "") + ".png"));
                     }
 
                     betterOption();
@@ -365,7 +369,7 @@ namespace competenciaMercadeo
                         richTextBox.Select((index), item.Value.Length);
                         richTextBox.SelectionColor = Color.FromArgb(41, 83, 131);
                         richTextBox.Select(selectStart, 0);
-                        richTextBox.SelectionColor = Color.FromArgb(217,218,128);
+                        richTextBox.SelectionColor = Color.FromArgb(217, 218, 128);
                     }
                 }
             }
@@ -383,7 +387,7 @@ namespace competenciaMercadeo
                         richTextBox.Select((index), item.Value.Length);
                         richTextBox.SelectionColor = Color.FromArgb(30, 232, 190);
                         richTextBox.Select(selectStart, 0);
-                        richTextBox.SelectionColor = Color.FromArgb(217,218,128);
+                        richTextBox.SelectionColor = Color.FromArgb(217, 218, 128);
                     }
                 }
             }
@@ -400,7 +404,7 @@ namespace competenciaMercadeo
                         richTextBox.Select((index), item.Value.Length);
                         richTextBox.SelectionColor = Color.FromArgb(227, 103, 149);
                         richTextBox.Select(selectStart, 0);
-                        richTextBox.SelectionColor = Color.FromArgb(217,218,128);
+                        richTextBox.SelectionColor = Color.FromArgb(217, 218, 128);
                     }
                 }
             }
@@ -417,7 +421,7 @@ namespace competenciaMercadeo
                         richTextBox.Select((index), item.Value.Length);
                         richTextBox.SelectionColor = Color.FromArgb(207, 113, 65);
                         richTextBox.Select(selectStart, 0);
-                        richTextBox.SelectionColor = Color.FromArgb(217,218,128);
+                        richTextBox.SelectionColor = Color.FromArgb(217, 218, 128);
                     }
                 }
             }
@@ -434,7 +438,7 @@ namespace competenciaMercadeo
                         richTextBox.Select((index), item.Value.Length);
                         richTextBox.SelectionColor = Color.FromArgb(217, 171, 103);
                         richTextBox.Select(selectStart, 0);
-                        richTextBox.SelectionColor = Color.FromArgb(217,218,128);
+                        richTextBox.SelectionColor = Color.FromArgb(217, 218, 128);
                     }
                 }
             }

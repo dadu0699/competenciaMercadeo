@@ -61,7 +61,7 @@ namespace competenciaMercadeo.util
             foreach (Continent continent in graph.Continents)
             {
                 this.graph.Append("\n\n\tstart -> " + continent.Name.Replace(" ", "") + ";");
-                this.graph.Append("\n\t" + continent.Name.Replace(" ", "") + " [shape=record label=\"{" + continent.Name + "|" 
+                this.graph.Append("\n\t" + continent.Name.Replace(" ", "") + " [shape=record label=\"{" + continent.Name + "|"
                     + continent.Saturation + "}\"style=filled fillcolor=" + getColor(continent.Saturation) + "];");
 
                 Console.WriteLine(continent.Name + "----" + continent.Saturation);
@@ -107,6 +107,23 @@ namespace competenciaMercadeo.util
                 color = "red";
             }
             return color;
+        }
+
+        private void deleteFile(string pathFile)
+        {
+            try
+            {  
+                if (File.Exists(pathFile))
+                {  
+                    File.Delete(pathFile);
+                    Console.WriteLine("File deleted");
+                }
+                else Console.WriteLine("File not found");
+            }
+            catch (IOException ioExp)
+            {
+                Console.WriteLine(ioExp.Message);
+            }
         }
     }
 }
