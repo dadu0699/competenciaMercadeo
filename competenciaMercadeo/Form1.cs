@@ -361,16 +361,7 @@ namespace competenciaMercadeo
                     || item.TypeToken.Equals("Reservada Poblacion") || item.TypeToken.Equals("Reservada Saturacion")
                     || item.TypeToken.Equals("Reservada Bandera"))
                 {
-                    int index = -1;
-                    int selectStart = richTextBox.SelectionStart;
-
-                    while ((index = richTextBox.Text.IndexOf(item.Value, (index + 1))) != -1)
-                    {
-                        richTextBox.Select((index), item.Value.Length);
-                        richTextBox.SelectionColor = Color.FromArgb(41, 83, 131);
-                        richTextBox.Select(selectStart, 0);
-                        richTextBox.SelectionColor = Color.FromArgb(217, 218, 128);
-                    }
+                    wordColor(item.Value, Color.FromArgb(41, 83, 131));
                 }
             }
 
@@ -379,16 +370,7 @@ namespace competenciaMercadeo
             {
                 if (item.TypeToken.Equals("Numero"))
                 {
-                    int index = -1;
-                    int selectStart = richTextBox.SelectionStart;
-
-                    while ((index = richTextBox.Text.IndexOf(item.Value, (index + 1))) != -1)
-                    {
-                        richTextBox.Select((index), item.Value.Length);
-                        richTextBox.SelectionColor = Color.FromArgb(30, 232, 190);
-                        richTextBox.Select(selectStart, 0);
-                        richTextBox.SelectionColor = Color.FromArgb(217, 218, 128);
-                    }
+                    wordColor(item.Value, Color.FromArgb(30, 232, 190));
                 }
             }
 
@@ -396,16 +378,7 @@ namespace competenciaMercadeo
             {
                 if (item.TypeToken.Equals("Simbolo Llave Izquierda") || item.TypeToken.Equals("Simbolo Llave Derecha"))
                 {
-                    int index = -1;
-                    int selectStart = richTextBox.SelectionStart;
-
-                    while ((index = richTextBox.Text.IndexOf(item.Value, (index + 1))) != -1)
-                    {
-                        richTextBox.Select((index), item.Value.Length);
-                        richTextBox.SelectionColor = Color.FromArgb(227, 103, 149);
-                        richTextBox.Select(selectStart, 0);
-                        richTextBox.SelectionColor = Color.FromArgb(217, 218, 128);
-                    }
+                    wordColor(item.Value, Color.FromArgb(227, 103, 149));
                 }
             }
 
@@ -413,16 +386,7 @@ namespace competenciaMercadeo
             {
                 if (item.TypeToken.Equals("Simbolo Punto y Coma"))
                 {
-                    int index = -1;
-                    int selectStart = richTextBox.SelectionStart;
-
-                    while ((index = richTextBox.Text.IndexOf(item.Value, (index + 1))) != -1)
-                    {
-                        richTextBox.Select((index), item.Value.Length);
-                        richTextBox.SelectionColor = Color.FromArgb(207, 113, 65);
-                        richTextBox.Select(selectStart, 0);
-                        richTextBox.SelectionColor = Color.FromArgb(217, 218, 128);
-                    }
+                    wordColor(item.Value, Color.FromArgb(207, 113, 65));
                 }
             }
 
@@ -430,17 +394,23 @@ namespace competenciaMercadeo
             {
                 if (item.TypeToken.Equals("Cadena"))
                 {
-                    int index = -1;
-                    int selectStart = richTextBox.SelectionStart;
-
-                    while ((index = richTextBox.Text.IndexOf(item.Value, (index + 1))) != -1)
-                    {
-                        richTextBox.Select((index), item.Value.Length);
-                        richTextBox.SelectionColor = Color.FromArgb(217, 171, 103);
-                        richTextBox.Select(selectStart, 0);
-                        richTextBox.SelectionColor = Color.FromArgb(217, 218, 128);
-                    }
+                    wordColor(item.Value, Color.FromArgb(217, 171, 103));
                 }
+            }
+        }
+
+        private void wordColor(string word, Color color)
+        {
+            RichTextBox richTextBox = tabControl1.SelectedTab.Controls.Cast<RichTextBox>().FirstOrDefault(x => x is RichTextBox);
+            int index = -1;
+            int selectStart = richTextBox.SelectionStart;
+
+            while ((index = richTextBox.Text.IndexOf(word, (index + 1))) != -1)
+            {
+                richTextBox.Select((index), word.Length);
+                richTextBox.SelectionColor = color;
+                richTextBox.Select(selectStart, 0);
+                richTextBox.SelectionColor = Color.FromArgb(217, 218, 128);
             }
         }
     }
