@@ -164,7 +164,6 @@ namespace competenciaMercadeo
 
         private void betterOption()
         {
-
             List<Country> countries = new List<Country>();
             List<Continent> continents = new List<Continent>();
             Country countryLabels = null;
@@ -191,7 +190,7 @@ namespace competenciaMercadeo
                 {
                     for (int j = 0; j < orderedContinents.Count; j++)
                     {
-                        if (orderedContinents[j].Countries[0].Name == orderedCountries[0].Name)
+                        if (orderedContinents[j].Countries[0].Name == orderedCountries[i].Name)
                         {
                             countryLabels = orderedCountries[i];
                             break;
