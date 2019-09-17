@@ -23,7 +23,7 @@ namespace competenciaMercadeo.util
         {
             File.WriteAllText(rdot, graph.ToString());
             string dotCommand = "dot.exe -Tpng " + rdot + " -o " + rpng;
-            Console.WriteLine(dotCommand);
+            // Console.WriteLine(dotCommand);
 
             var command = string.Format(dotCommand);
             var startProcess = new ProcessStartInfo("cmd", "/C" + command);

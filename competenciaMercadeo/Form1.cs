@@ -39,7 +39,9 @@ namespace competenciaMercadeo
             if (graphVizBox.Image != null)
             {
                 graphVizBox.Image.Dispose();
+
             }
+            graphVizBox.Image = null;
             flagBox.Image = null;
             countryLabel.Text = null;
             populationlabel.Text = null;
@@ -410,7 +412,7 @@ namespace competenciaMercadeo
                 richTextBox.Select((index), word.Length);
                 richTextBox.SelectionColor = color;
                 richTextBox.Select(selectStart, 0);
-                richTextBox.SelectionColor = Color.FromArgb(217, 218, 128);
+                richTextBox.SelectionColor = Color.FromArgb(50, 50, 50);
             }
         }
     }
