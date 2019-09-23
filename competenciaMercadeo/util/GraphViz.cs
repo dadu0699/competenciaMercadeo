@@ -64,13 +64,13 @@ namespace competenciaMercadeo.util
                 this.graph.Append("\n\t" + continent.Name.Replace(" ", "") + " [shape=record label=\"{" + continent.Name + "|"
                     + continent.Saturation + "}\"style=filled fillcolor=" + getColor(continent.Saturation) + "];");
 
-                Console.WriteLine(continent.Name + "----" + continent.Saturation);
+                Console.WriteLine("Continente: " + continent.Name + ", " + continent.Population + ", " + continent.Saturation + "%, " + getColor(continent.Saturation));
                 foreach (Country country in continent.Countries)
                 {
                     this.graph.Append("\n\t" + continent.Name.Replace(" ", "") + " -> " + country.Name.Replace(" ", "") + ";");
                     this.graph.Append("\n\t" + country.Name.Replace(" ", "") + " [shape=record label=\"{" + country.Name + "|"
                         + country.Saturation + "}\"style=filled fillcolor=" + getColor(country.Saturation) + "];");
-                    Console.WriteLine("\t" + country.Name + "----" + country.Saturation);
+                    Console.WriteLine("\tPais: " + country.Name + ", " + country.Population + ", " + country.Saturation + "%, " + getColor(country.Saturation));
                 }
             }
             this.graph.Append("\n}");

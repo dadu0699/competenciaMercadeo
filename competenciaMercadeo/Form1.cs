@@ -46,6 +46,7 @@ namespace competenciaMercadeo
             countryLabel.Text = null;
             populationlabel.Text = null;
 
+            intelliSense();
             if (!lexicalAnalyzer.ListError.Any())
             {
                 if (lexicalAnalyzer.ListToken.Any())
@@ -65,7 +66,6 @@ namespace competenciaMercadeo
                     }
 
                     betterOption();
-                    intelliSense();
                 }
             }
             else
@@ -103,6 +103,7 @@ namespace competenciaMercadeo
                         {
                             string continentName = removeQuotes(ListToken[j + 5].Value);
                             int continentSaturation = 0;
+                            int continentPopulation = 0;
 
                             // Countries
                             List<Country> countries = new List<Country>();
@@ -150,9 +151,10 @@ namespace competenciaMercadeo
                             foreach (Country item in countries)
                             {
                                 continentSaturation += item.Saturation;
+                                continentPopulation += item.Population;
                             }
                             continentSaturation = continentSaturation / countries.Count;
-                            continents.Add(new Continent(continentName, countries, continentSaturation));
+                            continents.Add(new Continent(continentName, continentPopulation, countries, continentSaturation));
                         }
                     }
 
@@ -362,7 +364,7 @@ namespace competenciaMercadeo
                     || item.TypeToken.Equals("Reservada Poblacion") || item.TypeToken.Equals("Reservada Saturacion")
                     || item.TypeToken.Equals("Reservada Bandera"))
                 {
-                    wordColor(item.Value, Color.FromArgb(41, 83, 131));
+                    wordColor(item.Value, Color.FromArgb(41, 83, 131), richTextBox);
                 }
             }
 
@@ -371,7 +373,7 @@ namespace competenciaMercadeo
             {
                 if (item.TypeToken.Equals("Numero"))
                 {
-                    wordColor(item.Value, Color.FromArgb(30, 232, 190));
+                    wordColor(item.Value, Color.FromArgb(30, 232, 190), richTextBox);
                 }
             }
 
@@ -379,7 +381,7 @@ namespace competenciaMercadeo
             {
                 if (item.TypeToken.Equals("Simbolo Llave Izquierda") || item.TypeToken.Equals("Simbolo Llave Derecha"))
                 {
-                    wordColor(item.Value, Color.FromArgb(227, 103, 149));
+                    wordColor(item.Value, Color.FromArgb(227, 103, 149), richTextBox);
                 }
             }
 
@@ -387,7 +389,7 @@ namespace competenciaMercadeo
             {
                 if (item.TypeToken.Equals("Simbolo Punto y Coma"))
                 {
-                    wordColor(item.Value, Color.FromArgb(207, 113, 65));
+                    wordColor(item.Value, Color.FromArgb(207, 113, 65), richTextBox);
                 }
             }
 
@@ -395,14 +397,13 @@ namespace competenciaMercadeo
             {
                 if (item.TypeToken.Equals("Cadena"))
                 {
-                    wordColor(item.Value, Color.FromArgb(217, 171, 103));
+                    wordColor(item.Value, Color.FromArgb(217, 171, 103), richTextBox);
                 }
             }
         }
 
-        private void wordColor(string word, Color color)
+        private void wordColor(string word, Color color, RichTextBox richTextBox)
         {
-            RichTextBox richTextBox = tabControl1.SelectedTab.Controls.Cast<RichTextBox>().FirstOrDefault(x => x is RichTextBox);
             int index = -1;
             int selectStart = richTextBox.SelectionStart;
 

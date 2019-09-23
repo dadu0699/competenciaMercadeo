@@ -89,7 +89,7 @@ namespace competenciaMercadeo.controller
                         }
                         break;
                     case 1:
-                        if (char.IsLetter(character))
+                        if (char.IsLetter(character) || char.IsDigit(character))
                         {
                             state = 1;
                             auxiliary += character;
