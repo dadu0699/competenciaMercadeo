@@ -57,15 +57,23 @@ namespace competenciaMercadeo
                         Process.Start(Directory.GetCurrentDirectory() + "\\listadoTokens.html");
                     }
 
-                    createGraph(lexicalAnalyzer.ListToken);
-                    if (File.Exists(Directory.GetCurrentDirectory() + "\\" + graph.Name.Replace(" ", "") + ".png"))
+                    if (!verifySaturation(lexicalAnalyzer.ListToken))
                     {
-                        Image image = Image.FromFile(Directory.GetCurrentDirectory() + "\\" + graph.Name.Replace(" ", "") + ".png");
-                        graphVizBox.Image = image;
-                        // graphVizBox.Image = new Bitmap(Image.FromFile(Directory.GetCurrentDirectory() + "\\" + graph.Name.Replace(" ", "") + ".png"));
-                    }
 
-                    betterOption();
+                        createGraph(lexicalAnalyzer.ListToken);
+                        if (File.Exists(Directory.GetCurrentDirectory() + "\\" + graph.Name.Replace(" ", "") + ".png"))
+                        {
+                            Image image = Image.FromFile(Directory.GetCurrentDirectory() + "\\" + graph.Name.Replace(" ", "") + ".png");
+                            graphVizBox.Image = image;
+                            // graphVizBox.Image = new Bitmap(Image.FromFile(Directory.GetCurrentDirectory() + "\\" + graph.Name.Replace(" ", "") + ".png"));
+                        }
+
+                        betterOption();
+                    }
+                    else
+                    {
+                        MessageBox.Show("EL archivo posee saturaciones mayores al 100%", "Error");
+                    }
                 }
             }
             else
@@ -208,6 +216,21 @@ namespace competenciaMercadeo
                 Image image = Image.FromFile(countryLabels.Flag);
                 flagBox.Image = image;
             }
+        }
+
+        private bool verifySaturation(List<Token> ListToken)
+        {
+            for (int i = 0; i < ListToken.Count; i++)
+            {
+                if (ListToken[i].TypeToken.Equals("Simbolo Porcentaje"))
+                {
+                    if (int.Parse(ListToken[i - 1].Value) > 100)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         private string removeQuotes(string chain)
