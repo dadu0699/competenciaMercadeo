@@ -200,7 +200,7 @@ namespace competenciaMercadeo
                 {
                     for (int j = 0; j < orderedContinents.Count; j++)
                     {
-                        if (orderedContinents[j].Countries[0].Name == orderedCountries[i].Name)
+                        if (orderedContinents[j].Countries[0].Name == orderedCountries[0].Name)
                         {
                             countryLabels = orderedCountries[i];
                             break;
